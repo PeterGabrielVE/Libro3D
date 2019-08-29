@@ -38,86 +38,44 @@
 }
 
 .main{
-  margin: 10%;
-  margin-left: 10%;
-  margin-right: 15%;
+  width: 90%;
+  max-width: 1060px;
+  margin-top: 10%;
+  position: relative;
+  padding: 0 30px 50px 30px;
 }
-
 
 .bk-list {
   list-style: none;
   position: relative;
+  width: 533px; /* 13 books * 40px + 13 books * margin (1px) */
+  margin: 0 auto;
+  -webkit-perspective: 1800px;
+  -moz-perspective: 1800px;
+  perspective: 1800px;
+  -webkit-perspective-origin: 50% 15%;
+  -moz-perspective-origin: 50% 15%;
+  perspective-origin: 50% 15%;
 }
 
 .bk-list li {
   position: relative;
-  width: 300px;
+  width: 40px;
+  height: 400px;
   float: left;
   z-index: 1;
-  margin: 0px 50px 40px 0;
-  -webkit-perspective: 1800px;
-  -moz-perspective: 1800px;
-  perspective: 1800px;
+  margin: 0px 0px 0px 1px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
 .bk-list li:last-child {
   margin-right: 0;
 }
 
-.bk-info {
-  position: relative;
-  margin-top: 440px;
-}
-
-.bk-info h3 {
-  padding: 25px 0 10px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid rgba(0,0,0,0.3);
-  font-size: 26px;
-}
-
-.bk-info h3 span:first-child {
-  font-size: 14px;
-  font-weight: 400;
-  text-transform: uppercase;
-  padding-bottom: 5px;
-  display: block;
-  color: #777;
-}
-
-.bk-info p {
-  line-height: 24px;
-  color: #444;
-  min-height: 160px;
-}
-
-.bk-info button {
-  background: #181DF4;
-  border: none;
-  color: #fff;
-  display: inline-block;
-  padding: 3px 15px;
-  font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-right: 4px;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
-}
-
-.bk-info button.bk-active,
-.bk-info button:active {
-  box-shadow: 
-    0 1px 0 rgba(255, 255, 255, 0.8), 
-    inset 0 -1px 1px rgba(0,0,0,0.2);
-}
-
-.no-touch .bk-info button:hover,
-.bk-info button.bk-active {
-  background: #4A41FF;
-}
-
 .bk-list li .bk-book {
+  cursor: pointer;
   position: absolute;
   width: 100%;
   height: 400px;
@@ -127,12 +85,15 @@
   -webkit-transition: -webkit-transform .5s;
   -moz-transition: -moz-transform .5s;
   transition: transform .5s;
+  -webkit-transform: rotate3d(0,1,0,90deg);
+  -moz-transform: rotate3d(0,1,0,90deg);
+  transform: rotate3d(0,1,0,90deg);
 }
 
-.bk-list li .bk-book.bk-bookdefault:hover {
-  -webkit-transform: rotate3d(0,1,0,35deg);
-  -moz-transform: rotate3d(0,1,0,35deg);
-  transform: rotate3d(0,1,0,35deg);
+.bk-list li .bk-book:hover {
+  -webkit-transform: rotateY(90deg) rotateZ(-15deg) translate3d(-100px,0,0);
+  -moz-transform: rotateY(90deg) rotateZ(-15deg) translate3d(-100px,0,0);
+  transform: rotateY(90deg) rotateZ(-15deg) translate3d(-100px,0,0);
 }
 
 .bk-list li .bk-book > div,
@@ -154,7 +115,6 @@
   -webkit-transform: translate3d(0,0,20px);
   -moz-transform: translate3d(0,0,20px);
   transform: translate3d(0,0,20px);
-  z-index: 10;
 }
 
 .bk-list li .bk-front > div {
@@ -177,7 +137,6 @@
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
-  z-index: 9;
 }
 
 .bk-list li .bk-front,
@@ -198,16 +157,12 @@
   width: 295px;
   height: 40px;
   top: -15px;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 .bk-list li .bk-back {
   -webkit-transform: rotate3d(0,1,0,-180deg) translate3d(0,0,20px);
   -moz-transform: rotate3d(0,1,0,-180deg) translate3d(0,0,20px);
   transform: rotate3d(0,1,0,-180deg) translate3d(0,0,20px);
-  box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
   border-radius: 3px 0 0 3px;
 }
 
@@ -234,6 +189,10 @@
   -webkit-transform: rotate3d(0,1,0,-90deg);
   -moz-transform: rotate3d(0,1,0,-90deg);
   transform: rotate3d(0,1,0,-90deg);
+  box-shadow: 
+    inset 4px 0 5px rgba(255,255,255,0.1), 
+    inset 5px 0 5px rgba(0,0,0,0.05),
+    inset -5px 0 5px rgba(0,0,0,0.04);;
 }
 
 .bk-list li .bk-top {
@@ -257,19 +216,21 @@
 }
 
 .bk-list li .bk-book.bk-viewinside {
-  -webkit-transform: translate3d(0,0,150px) rotate3d(0,1,0,0deg);
-  -moz-transform: translate3d(0,0,150px) rotate3d(0,1,0,0deg);
-  transform: translate3d(0,0,150px) rotate3d(0,1,0,0deg);
+  -webkit-transform: rotate3d(0,1,0,0deg) translateX(0px) translateZ(100px) !important;
+  -moz-transform: rotate3d(0,1,0,0deg) translateX(0px) translateZ(100px) !important;
+  transform: rotate3d(0,1,0,0deg) translateX(0px) translateZ(100px) !important;
+}
+
+.bk-list li .bk-book.bk-outside {
+  -webkit-transform: rotate3d(0,1,0,90deg) translateX(-300px);
+  -moz-transform: rotate3d(0,1,0,90deg) translateX(-300px);
+  transform: rotate3d(0,1,0,90deg) translateX(-300px);
 }
 
 .bk-list li .bk-book.bk-viewback {
   -webkit-transform: translate3d(0,0,0px) rotate3d(0,1,0,180deg);
   -moz-transform: translate3d(0,0,0px) rotate3d(0,1,0,180deg);
   transform: translate3d(0,0,0px) rotate3d(0,1,0,180deg);
-}
-
-.bk-list li .bk-viewback .bk-back {
-  z-index: 10;
 }
 
 /* Main colors and content */
@@ -326,7 +287,7 @@
 
 .bk-content {
   position: absolute;
-  top: 10px;
+  top: 30px;
   left: 20px;
   bottom: 20px;
   right: 20px;
@@ -389,13 +350,13 @@
 .book-1 .bk-back,
 .book-1 .bk-left,
 .book-1 .bk-front:after {
-  background-color: #FB5C5C;
+  background-color: #ff924a;
 }
 
 .book-1 .bk-cover {
   background-image: url(../images/1.png); 
   background-repeat: no-repeat;
-  background-position: 2px 10px;
+  background-position: 10px 40px;
 }
 
 .book-1 .bk-cover h2 {
@@ -441,7 +402,7 @@
 .book-1 .bk-back p {
   color: #fff;
   font-size: 13px;
-  padding: 20px;
+  padding: 40px;
   text-align: center;
   font-weight: 700;
 }
@@ -452,27 +413,26 @@
 .book-2 .bk-back,
 .book-2 .bk-left,
 .book-2 .bk-front:after {
-  background-color: #9ED9FB;
+  background-color: #222;
 }
 
 .book-2 .bk-cover {
   background-image: url(../images/2.png); 
   background-repeat: no-repeat;
-  background-position: 48% 0%;
-  background-size: 300px;
+  background-position: 98% 0%;
 }
 
 .book-2 .bk-cover h2, 
 .book-2 .bk-left h2 {
   color: #fff;
   font-family: 'the_godfatherregular', Georgia, serif;
-  font-weight: 150;
+  font-weight: 400;
 }
 
 .book-2 .bk-cover h2 {
-  font-size: 68px;
-  line-height: 52px;
-  padding: 20px;
+  font-size: 138px;
+  line-height: 102px;
+  padding: 30px;
 }
 
 .book-2 .bk-cover h2 span:first-child {
@@ -481,43 +441,53 @@
 }
 
 .book-2 .bk-cover h2 span:first-child:before {
-  content: 'la socializacion';
+  content: 'A novel';
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   text-transform: uppercase;
   position: absolute;
-  color: blue;
+  color: red;
   font-size: 20px;
-  right: -10px;
-  bottom: -80px;
+  right: -15px;
+  bottom: -60px;
 }
 
 .book-2 .bk-cover h2 span:last-child {
-  font-size: 22px;
-  line-height: 200px;
+  font-size: 100px;
+  line-height: 80px;
   display: block;
   position: relative;
 }
 
 .book-2 .bk-cover h2 span:last-child:before {
-  content: 'hacia';
-  font-size: 20px;
-  color: blue;
+  content: 'by';
+  font-size: 16px;
+  color: red;
   position: absolute;
-  top: -62px;
+  top: -32px;
   left: 62px;
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
 }
 
+.book-2 .bk-cover h2 span:last-child:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f9ed65;
+  position: absolute;
+  top: 5px;
+  left: 101px;
+}
 
 .book-2 .bk-left h2 {
   font-size: 20px;
   line-height: 40px;
-  padding-right: 30px;
+  padding-right: 10px;
   text-align: center;
 }
 
 .book-2 .bk-back p {
-  color: blue;
+  color: red;
   font-size: 13px;
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   padding: 40px;
@@ -530,7 +500,7 @@
 .book-3 .bk-back,
 .book-3 .bk-left,
 .book-3 .bk-front:after {
-  background-color: #C0BB29;
+  background-color: #a4c19e;
 }
 
 .book-3 .bk-cover {
@@ -581,12 +551,69 @@
 }
 
 .book-3 .bk-back p {
-  color:f #ff;
+  color: #fff;
   font-size: 13px;
   font-family: Georgia, Times, "Times New Roman", serif;
-  padding: 20px;
+  padding: 40px;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+}
+
+/* Some color variation for the other books */
+.bk-list li:nth-child(4) .bk-book .bk-front > div,
+.bk-list li:nth-child(4) .bk-book .bk-back,
+.bk-list li:nth-child(4) .bk-book .bk-left,
+.bk-list li:nth-child(4) .bk-book .bk-front:after {
+  background-color: #cfa6ef;
+}
+
+.bk-list li:nth-child(5) .bk-book .bk-front > div,
+.bk-list li:nth-child(5) .bk-book .bk-back,
+.bk-list li:nth-child(5) .bk-book .bk-left,
+.bk-list li:nth-child(5) .bk-book .bk-front:after {
+  background-color: #FFC2CE;
+}
+
+.bk-list li:nth-child(6) .bk-book .bk-front > div,
+.bk-list li:nth-child(6) .bk-book .bk-back,
+.bk-list li:nth-child(6) .bk-book .bk-left,
+.bk-list li:nth-child(6) .bk-book .bk-front:after {
+  background-color: #80B3FF;
+}
+
+.bk-list li:nth-child(7) .bk-book .bk-front > div,
+.bk-list li:nth-child(7) .bk-book .bk-back,
+.bk-list li:nth-child(7) .bk-book .bk-left,
+.bk-list li:nth-child(7) .bk-book .bk-front:after {
+  background-color: #FD6E8A;
+}
+
+.bk-list li:nth-child(8) .bk-book .bk-front > div,
+.bk-list li:nth-child(8) .bk-book .bk-back,
+.bk-list li:nth-child(8) .bk-book .bk-left,
+.bk-list li:nth-child(8) .bk-book .bk-front:after {
+  background-color: #A2122F;
+}
+
+.bk-list li:nth-child(9) .bk-book .bk-front > div,
+.bk-list li:nth-child(9) .bk-book .bk-back,
+.bk-list li:nth-child(9) .bk-book .bk-left,
+.bk-list li:nth-child(9) .bk-book .bk-front:after {
+  background-color: #439877;
+}
+
+.bk-list li:nth-child(10) .bk-book .bk-front > div,
+.bk-list li:nth-child(10) .bk-book .bk-back,
+.bk-list li:nth-child(10) .bk-book .bk-left,
+.bk-list li:nth-child(10) .bk-book .bk-front:after {
+  background-color: #5E445D;
+}
+
+.bk-list li:nth-child(11) .bk-book .bk-front > div,
+.bk-list li:nth-child(11) .bk-book .bk-back,
+.bk-list li:nth-child(11) .bk-book .bk-left,
+.bk-list li:nth-child(11) .bk-book .bk-front:after {
+  background-color: #A8936D;
 }
 
 /* Fallbacks */
@@ -605,29 +632,21 @@
   display: none;
 }
 
-
-
-
-/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
+.no-csstransforms3d .bk-list {
+  width: auto;
 }
 
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
+.no-csstransforms3d .bk-list li {
+  position: relative;
+  width: 300px;
+  margin: 10px;
+  float: left;
+}
+
+.bookshelf {
+  width: 100%;
+  height: 830px;
+  z-index: -1;
+  background: transparent url(../images/shelf.png) no-repeat center center;
+  position: relative;
 }
